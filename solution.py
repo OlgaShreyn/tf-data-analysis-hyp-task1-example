@@ -2,7 +2,7 @@ import pandas as pd
 import numpy as np
 
 
-chat_id = 123456 # Ваш chat ID, не меняйте название переменной
+chat_id = 368780632 # Ваш chat ID, не меняйте название переменной
 
 def solution(x_success: int, 
              x_cnt: int, 
@@ -11,4 +11,11 @@ def solution(x_success: int,
     # Измените код этой функции
     # Это будет вашим решением
     # Не меняйте название функции и её аргументы
-    return ... # Ваш ответ, True или False
+    alpha = 0.06
+    count = np.array([x_success, y_success])
+    nobs = np.array([x_cnt, y_cnt])
+    p_val = proportions_ztest(count, nobs, alternative='larger')[1]
+    if p_val <= alpha:
+        return True
+    else: 
+        return False
